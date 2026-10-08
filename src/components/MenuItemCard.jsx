@@ -1,18 +1,22 @@
 function MenuItemCard() {
-  const name = "Nasi Ayam Gepuk";
-  const description = "Makanan berasal daripada Indonesia";
-  const price = 6.0;
-  const available = true;
-
+  const item = {
+    name: "Nasi Lemak Ayam",
+    description: "Coconut rice, fried chicken, sambal, egg and peanuts",
+    price: 7.5,
+    available: true,
+  };
   return (
-    <div clasName="menu-item-card">
-      <h3>{name}</h3>
-      <p>{description}</p>
-      <p>RM {price.toFixed(2)}</p>
-      <button disabled={!available}>
-        {available ? "add to cart" : "sold Out"}
+    <article className="card menu-card">
+      <div className="thumb" aria-hidden="true">
+        {item.name.charAt(0)}
+      </div>
+      <h3>{item.name}</h3>
+      <p className="muted">{item.description}</p>
+      <p className="price">RM {item.price.toFixed(2)}</p>
+      <button className="btn" disabled={!item.available}>
+        {item.available ? "Add to cart" : "Sold out"}
       </button>
-    </div>
+    </article>
   );
 }
 export default MenuItemCard;

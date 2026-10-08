@@ -1,20 +1,24 @@
 function VendorCard() {
-  const name = "Cafe Faruq";
-  const location = "Mahallah Faruq IIUM Gombak";
-  const openHours = "7 AM - 10 PM";
-  const isOpen = true;
-
+  const vendor = {
+    name: "Kafe Mahallah Ali",
+    location: "Mahallah Ali, Block C",
+    openHours: "7:00 am - 10:00 pm",
+    isOpen: true,
+  };
   return (
-    <div className="thumb">
-      {name[0]}
-      <h2>{name}</h2>
-      <p>{location}</p>
-      <p>{openHours}</p>
-
-      <span className={isOpen ? "status open" : "status closed"}>
-        {isOpen ? "Open now" : "Closed"}
-      </span>
-    </div>
+    <article className="card vendor-card">
+      <div className="thumb" aria-hidden="true">
+        {vendor.name.charAt(0)}
+      </div>
+      <div>
+        <h2>{vendor.name}</h2>
+        <p className="muted">{vendor.location}</p>
+        <p className="muted">Open: {vendor.openHours}</p>
+        <span className={vendor.isOpen ? "status open" : "status closed"}>
+          {vendor.isOpen ? "Open now" : "Closed"}
+        </span>
+      </div>
+    </article>
   );
 }
 export default VendorCard;
