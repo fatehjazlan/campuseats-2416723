@@ -1,0 +1,152 @@
+.link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: #fff;
+  cursor: pointer;
+}
+.link.danger {
+  color: #b3261e;
+  font-size: 0.9rem;
+}
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+@media (max-width: 720px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+}
+.cart-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cart-line {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e4e7eb;
+}
+.cart-name {
+  margin: 0;
+  font-weight: 600;
+}
+.qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.qty button {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #c5cbd3;
+  background: #fff;
+  cursor: pointer;
+}
+.line-total {
+  font-weight: 600;
+  margin: 0;
+}
+.cart-total {
+  text-align: right;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 1rem 0 0;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.form label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+.form input,
+.form select {
+  padding: 0.5rem;
+  border: 1px solid #c5cbd3;
+  borderradius: 8px;
+  font: inherit;
+}
+.field-error {
+  color: #b3261e;
+  font-size: 0.85rem;
+  margin: 0;
+}
+.error {
+  border-left: 4px solid #b3261e;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: #00695c;
+  color: white;
+}
+
+.logo {
+  margin: 0;
+  color: white;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: white;
+  cursor: pointer;
+}
+
+.badge {
+  display: inline-block;
+  background: white;
+  color: #00695c;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-weight: bold;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.menu-card {
+  background: white;
+  border: 1px solid #e0e7e6;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+}
+
+.menu-card h3 {
+  margin: 10px 0;
+}
+
+.menu-card button {
+  background: #006d67;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 10px;
+  cursor: pointer;
+}

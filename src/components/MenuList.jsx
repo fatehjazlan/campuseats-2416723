@@ -1,16 +1,42 @@
 import MenuItemCard from "./MenuItemCard.jsx";
 
-function MenuList({ items, onAdd }) {
-  if (items.length === 0) {
-    return <p className="muted">No items on this menu yet.</p>;
-  }
+function MenuList({
+  items,
+  onAdd,
+  favourites,
+  onToggleFavourite,
+  showFavouritesOnly,
+  onShowFavouritesOnlyChange,
+}) {
+  const visibleItems = showFavouritesOnly
+    ? items.filter((item) => favourites.includes(item.id))
+    : items;
 
   return (
-    <div className="grid">
-      {items.map((item) => (
-        <MenuItemCard key={item.id} item={item} onAdd={onAdd} />
-      ))}
-    </div>
+    <>
+      <button
+        type="button"
+        onClick={() => onShowFavouritesOnlyChange(!showFavouritesOnly)}
+      >
+        {showFavouritesOnly ? "Show All Items" : "Favourites Only"}
+      </button>
+
+      {visibleItems.length === 0 ? (
+        <p className="muted">No items to display.</p>
+      ) : (
+        <div className="grid">
+          {visibleItems.map((item) => (
+            <MenuItemCard
+              key={item.id}
+              item={item}
+              onAdd={onAdd}
+              isFavourite={favourites.includes(item.id)}
+              onToggleFavourite={onToggleFavourite}
+            />
+          ))}
+        </div>
+      )}
+    </>
   );
 }
 

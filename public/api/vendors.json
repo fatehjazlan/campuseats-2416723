@@ -1,0 +1,190 @@
+[
+  {
+    "id": "Cafe-2416723",
+    "name": "Fateh Cafe",
+    "location": "Mahallah Faruq, IIUM Gombak",
+    "openHours": "7:00 am - 11:00 pm",
+    "isOpen": true,
+    "menu": [
+      {
+        "id": "2416723-1",
+        "name": "Teh Tarik",
+        "price": 2.5,
+        "category": "Drinks",
+        "description": "Traditional Malaysian tea",
+        "available": true
+      },
+      {
+        "id": "2416723-2",
+        "name": "Nasi Lemak",
+        "price": 5.0,
+        "category": "Main Dishes",
+        "description": "Traditional Malaysian rice dish",
+        "available": true
+      },
+      {
+        "id": "2416723-3",
+        "name": "Roti Canai",
+        "price": 1.2,
+        "category": "Main Dishes",
+        "description": "Traditional Malaysian flatbread",
+        "available": true
+      },
+      {
+        "id": "2416723-4",
+        "name": "Shawarma",
+        "price": 7.5,
+        "category": "Main Dishes",
+        "description": "Arabic wrap with meat and vegetables",
+        "available": true
+      },
+      {
+        "id": "2416723-5",
+        "name": "Nasi Ayam Gepuk",
+        "price": 8.0,
+        "category": "Main Dishes",
+        "description": "Traditional Indonesian rice dish",
+        "available": true
+      },
+      {
+        "id": "2416723-6",
+        "name": "Nasi Kandar",
+        "price": 6.5,
+        "category": "Main Dishes",
+        "description": "Top tasty Malaysian rice dish",
+        "available": true
+      },
+      {
+        "id": "2416723-7",
+        "name": "Mee Tarik",
+        "price": 7.0,
+        "category": "Main Dishes",
+        "description": "Famous Chinese noodle dish",
+        "available": true
+      },
+      {
+        "id": "2416723-8",
+        "name": "Jus Mangga",
+        "price": 4.0,
+        "category": "Drinks",
+        "description": "Fresh mango juice",
+        "available": true
+      }
+    ]
+  },
+  {
+    "id": "kafe-2416443",
+    "name": "Kafe Dinie Masakang Pantai Timur",
+    "location": "Mahallah Ali, Block C",
+    "openHours": "7:00 am - 10:00 pm",
+    "isOpen": true,
+    "menu": [
+      {
+        "id": "2416443-1",
+        "name": "Keropok lekor",
+        "description": "Fried fish finger with chili sauce",
+        "price": 7.5,
+        "category": "Snack",
+        "available": true
+      },
+      {
+        "id": "2416443-2",
+        "name": "Nasi Lemak Ikan",
+        "description": "Nasi lemak served with fried fish and sambal",
+        "price": 7.5,
+        "category": "Rice",
+        "available": true
+      },
+      {
+        "id": "2416443-3",
+        "name": "Nasi Dagang",
+        "description": "Nasi dagang served with gravy of fish ",
+        "price": 9.5,
+        "category": "Rice",
+        "available": true
+      },
+      {
+        "id": "2416443-4",
+        "name": "Laksam Kelantan",
+        "description": "White noodles with fish sauce",
+        "price": 6.0,
+        "category": "Noodles",
+        "available": true
+      },
+      {
+        "id": "2416443-5",
+        "name": "Teh Tarik Ice",
+        "description": "Classic Malaysian iced pulled milk tea",
+        "price": 2.5,
+        "category": "Beverages",
+        "available": true
+      }
+    ]
+  },
+  {
+    "id": "2418793-Faizul-Cafe",
+    "name": "Faizul Cafe",
+    "location": "Mahallah Siddiq, Block A",
+    "openHours": "8:00 am - 11:00 pm",
+    "isOpen": true,
+    "menu": [
+      {
+        "id": "2418793-d1",
+        "name": "Teh Hijau",
+        "price": 3.0,
+        "category": "Drinks",
+        "popular": true,
+        "available": true
+      },
+      {
+        "id": "2418793-d2",
+        "name": "Teh Bunga",
+        "price": 2.5,
+        "category": "Drinks",
+        "popular": true
+      },
+      {
+        "id": "2418793-d3",
+        "name": "Teh Tarik",
+        "price": 2.5,
+        "category": "Drinks",
+        "popular": true
+      },
+      {
+        "id": "2418793-d4",
+        "name": "Teh O Ais",
+        "price": 1.8,
+        "category": "Drinks",
+        "popular": true
+      },
+      {
+        "id": "2418793-d5",
+        "name": "Matcha Strawberry",
+        "price": 7.0,
+        "category": "Drinks",
+        "popular": true
+      },
+      {
+        "id": "2418793-d6",
+        "name": "Keladi Latte",
+        "price": 6.5,
+        "category": "Drinks",
+        "popular": true
+      },
+      {
+        "id": "2418793-d7",
+        "name": "Spanish Latte",
+        "price": 7.0,
+        "category": "Drinks",
+        "popular": true
+      },
+      {
+        "id": "2418793-d8",
+        "name": "Americano",
+        "price": 5.0,
+        "category": "Drinks",
+        "popular": true
+      }
+    ]
+  }
+]
