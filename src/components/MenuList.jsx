@@ -1,14 +1,13 @@
+import { useState } from "react";
 import MenuItemCard from "./MenuItemCard.jsx";
+import { useCart } from "../hooks/useCart.js";
 import "../index.css";
 
-function MenuList({
-  items,
-  onAdd,
-  favourites,
-  onToggleFavourite,
-  showFavouritesOnly,
-  onShowFavouritesOnlyChange,
-}) {
+function MenuList({ items }) {
+  const { addToCart, favourites, toggleFavourite } = useCart();
+
+  const [showFavouritesOnly, setShowFavouritesOnly] = useState(false);
+
   const visibleItems = showFavouritesOnly
     ? items.filter((item) => favourites.includes(item.id))
     : items;
@@ -20,7 +19,7 @@ function MenuList({
           <input
             type="checkbox"
             checked={showFavouritesOnly}
-            onChange={(e) => onShowFavouritesOnlyChange(e.target.checked)}
+            onChange={(e) => setShowFavouritesOnly(e.target.checked)}
           />
           Favourites Only ❤️
         </label>
@@ -38,9 +37,9 @@ function MenuList({
             <MenuItemCard
               key={item.id}
               item={item}
-              onAdd={onAdd}
+              onAdd={addToCart}
               isFavourite={favourites.includes(item.id)}
-              onToggleFavourite={onToggleFavourite}
+              onToggleFavourite={toggleFavourite}
             />
           ))}
         </div>
