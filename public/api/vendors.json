@@ -1,6 +1,6 @@
 [
   {
-    "id": "Cafe-2416723",
+    "id": "2416723-Cafe",
     "name": "Fateh Cafe",
     "location": "Mahallah Faruq, IIUM Gombak",
     "openHours": "7:00 am - 11:00 pm",
@@ -12,7 +12,8 @@
         "price": 2.5,
         "category": "Drinks",
         "description": "Traditional Malaysian tea",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416723-2",
@@ -20,7 +21,8 @@
         "price": 5.0,
         "category": "Main Dishes",
         "description": "Traditional Malaysian rice dish",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416723-3",
@@ -28,7 +30,8 @@
         "price": 1.2,
         "category": "Main Dishes",
         "description": "Traditional Malaysian flatbread",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416723-4",
@@ -36,7 +39,8 @@
         "price": 7.5,
         "category": "Main Dishes",
         "description": "Arabic wrap with meat and vegetables",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416723-5",
@@ -44,7 +48,8 @@
         "price": 8.0,
         "category": "Main Dishes",
         "description": "Traditional Indonesian rice dish",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416723-6",
@@ -52,15 +57,17 @@
         "price": 6.5,
         "category": "Main Dishes",
         "description": "Top tasty Malaysian rice dish",
-        "available": true
+        "available": true,
+        "popular": false
       },
       {
         "id": "2416723-7",
         "name": "Mee Tarik",
         "price": 7.0,
-        "category": "Main Dishes",
+        "category": "Noodles",
         "description": "Famous Chinese noodle dish",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416723-8",
@@ -68,12 +75,13 @@
         "price": 4.0,
         "category": "Drinks",
         "description": "Fresh mango juice",
-        "available": true
+        "available": true,
+        "popular": true
       }
     ]
   },
   {
-    "id": "kafe-2416443",
+    "id": "2416443-Kafe",
     "name": "Kafe Dinie Masakang Pantai Timur",
     "location": "Mahallah Ali, Block C",
     "openHours": "7:00 am - 10:00 pm",
@@ -85,7 +93,8 @@
         "description": "Fried fish finger with chili sauce",
         "price": 7.5,
         "category": "Snack",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416443-2",
@@ -93,7 +102,8 @@
         "description": "Nasi lemak served with fried fish and sambal",
         "price": 7.5,
         "category": "Rice",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416443-3",
@@ -101,7 +111,8 @@
         "description": "Nasi dagang served with gravy of fish ",
         "price": 9.5,
         "category": "Rice",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416443-4",
@@ -109,7 +120,8 @@
         "description": "White noodles with fish sauce",
         "price": 6.0,
         "category": "Noodles",
-        "available": true
+        "available": true,
+        "popular": true
       },
       {
         "id": "2416443-5",
@@ -117,7 +129,8 @@
         "description": "Classic Malaysian iced pulled milk tea",
         "price": 2.5,
         "category": "Beverages",
-        "available": true
+        "available": true,
+        "popular": true
       }
     ]
   },
@@ -133,14 +146,17 @@
         "name": "Teh Hijau",
         "price": 3.0,
         "category": "Drinks",
-        "popular": true,
-        "available": true
+        "description": "Green tea with a hint of sweetness",
+        "available": true,
+        "popular": true
       },
       {
         "id": "2418793-d2",
         "name": "Teh Bunga",
         "price": 2.5,
         "category": "Drinks",
+        "description": "Floral tea with a sweet taste",
+        "available": true,
         "popular": true
       },
       {
@@ -148,6 +164,8 @@
         "name": "Teh Tarik",
         "price": 2.5,
         "category": "Drinks",
+        "description": "Classic Malaysian pulled milk tea",
+        "available": true,
         "popular": true
       },
       {
@@ -155,6 +173,8 @@
         "name": "Teh O Ais",
         "price": 1.8,
         "category": "Drinks",
+        "description": "Ice tea with a sweet taste",
+        "available": true,
         "popular": true
       },
       {
@@ -162,6 +182,8 @@
         "name": "Matcha Strawberry",
         "price": 7.0,
         "category": "Drinks",
+        "description": "Matcha and strawberry blended together",
+        "available": true,
         "popular": true
       },
       {
@@ -169,6 +191,8 @@
         "name": "Keladi Latte",
         "price": 6.5,
         "category": "Drinks",
+        "description": "A creamy latte with taro flavor",
+        "available": true,
         "popular": true
       },
       {
@@ -176,6 +200,8 @@
         "name": "Spanish Latte",
         "price": 7.0,
         "category": "Drinks",
+        "description": "A rich and creamy latte with Spanish influences",
+        "available": true,
         "popular": true
       },
       {
@@ -183,6 +209,8 @@
         "name": "Americano",
         "price": 5.0,
         "category": "Drinks",
+        "description": "A strong coffee drink with a smooth taste",
+        "available": true,
         "popular": true
       }
     ]

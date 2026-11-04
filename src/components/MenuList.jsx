@@ -1,4 +1,5 @@
 import MenuItemCard from "./MenuItemCard.jsx";
+import "../index.css";
 
 function MenuList({
   items,
@@ -14,15 +15,23 @@ function MenuList({
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => onShowFavouritesOnlyChange(!showFavouritesOnly)}
-      >
-        {showFavouritesOnly ? "Show All Items" : "Favourites Only"}
-      </button>
+      <div className="favourite-filter">
+        <label>
+          <input
+            type="checkbox"
+            checked={showFavouritesOnly}
+            onChange={(e) => onShowFavouritesOnlyChange(e.target.checked)}
+          />
+          Favourites Only ❤️
+        </label>
+      </div>
 
       {visibleItems.length === 0 ? (
-        <p className="muted">No items to display.</p>
+        <p className="muted">
+          {showFavouritesOnly
+            ? "No favourite items yet."
+            : "No items on this menu yet."}
+        </p>
       ) : (
         <div className="grid">
           {visibleItems.map((item) => (

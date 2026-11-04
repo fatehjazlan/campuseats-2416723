@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import Header from "./components/Header.jsx";
 import VendorCard from "./components/VendorCard.jsx";
 import MenuList from "./components/MenuList.jsx";
@@ -7,76 +8,81 @@ import Footer from "./components/Footer.jsx";
 import { Loading, ErrorMessage } from "./components/Status.jsx";
 
 function App() {
+  // B2: Fetched data
   const [vendors, setVendors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [reloadKey, setReloadKey] = useState(0);
+
+  // B3: Cart and selected vendor
   const [selectedVendorId, setSelectedVendorId] = useState(null);
   const [cart, setCart] = useState([]);
   const [view, setView] = useState("menu");
+
+  // B5: Last order
   const [lastOrder, setLastOrder] = useState(null);
+
+  // B6: Favourite items (matric digit 3)
   const [favourites, setFavourites] = useState([]);
   const [showFavouritesOnly, setShowFavouritesOnly] = useState(false);
 
-  // Load vendors from the mock API
+  // B2: Fetch vendors
   useEffect(() => {
     const controller = new AbortController();
 
-    async function loadVendors() {
-      try {
-        setLoading(true);
-        setError(null);
+    setLoading(true);
+    setError(null);
 
-        const response = await fetch("/api/vendors.json", {
-          signal: controller.signal,
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-
-        const data = await response.json();
+    fetch("/api/vendors.json", { signal: controller.signal })
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
         setVendors(data);
-        setSelectedVendorId((current) => current ?? data[0]?.id);
-      } catch (err) {
+        setSelectedVendorId((current) => current ?? data[0]?.id ?? null);
+      })
+      .catch((err) => {
         if (err.name !== "AbortError") {
           setError(err.message);
         }
-      } finally {
+      })
+      .finally(() => {
         if (!controller.signal.aborted) {
           setLoading(false);
         }
-      }
-    }
-
-    loadVendors();
+      });
 
     return () => controller.abort();
   }, [reloadKey]);
 
+  // Find selected vendor
   const selectedVendor = vendors.find(
     (vendor) => vendor.id === selectedVendorId,
   );
 
+  // B3: Cart badge shows total quantity
   const cartCount = cart.reduce((sum, line) => sum + line.qty, 0);
 
+  // B3: Add item to cart
   function handleAdd(item) {
-    setCart((current) => {
-      const existing = current.find((line) => line.item.id === item.id);
+    setCart((prev) => {
+      const existing = prev.find((line) => line.item.id === item.id);
 
       if (existing) {
-        return current.map((line) =>
+        return prev.map((line) =>
           line.item.id === item.id ? { ...line, qty: line.qty + 1 } : line,
         );
       }
 
-      return [...current, { item, qty: 1 }];
+      return [...prev, { item, qty: 1 }];
     });
   }
 
+  // B3: Change item quantity
   function handleChangeQty(itemId, delta) {
-    setCart((current) =>
-      current
+    setCart((prev) =>
+      prev
         .map((line) =>
           line.item.id === itemId ? { ...line, qty: line.qty + delta } : line,
         )
@@ -84,10 +90,12 @@ function App() {
     );
   }
 
+  // B3: Remove item
   function handleRemove(itemId) {
-    setCart((current) => current.filter((line) => line.item.id !== itemId));
+    setCart((prev) => prev.filter((line) => line.item.id !== itemId));
   }
 
+  // B5: Place order
   function handlePlaceOrder(details) {
     const total = cart.reduce(
       (sum, line) => sum + line.item.price * line.qty,
@@ -98,6 +106,8 @@ function App() {
     setCart([]);
     setView("done");
   }
+
+  // B6: Toggle favourite item
   function handleToggleFavourite(itemId) {
     setFavourites((prev) =>
       prev.includes(itemId)
@@ -105,6 +115,8 @@ function App() {
         : [...prev, itemId],
     );
   }
+
+  // Choose what to show from the view state
   let content;
 
   if (view === "cart") {
@@ -119,14 +131,15 @@ function App() {
   } else if (view === "done") {
     content = (
       <section className="card">
-        <h2>Order placed!</h2>
-        <p>Name: {lastOrder?.name}</p>
-        <p>Mahallah: {lastOrder?.mahallah}</p>
-        <p>Pickup time: {lastOrder?.pickupTime}</p>
-        <p>Total: RM {lastOrder?.total.toFixed(2)}</p>
-        <button className="btn" onClick={() => setView("menu")}>
-          Back to menu
-        </button>
+        <h2>Order placed.</h2>
+        {lastOrder && (
+          <>
+            <p>Name: {lastOrder.name}</p>
+            <p>Mahallah: {lastOrder.mahallah}</p>
+            <p>Pickup time: {lastOrder.pickupTime}</p>
+            <p>Total: RM {lastOrder.total.toFixed(2)}</p>
+          </>
+        )}
       </section>
     );
   } else if (loading) {
@@ -135,16 +148,15 @@ function App() {
     content = (
       <ErrorMessage
         message={error}
-        onRetry={() => setReloadKey((key) => key + 1)}
+        onRetry={() => setReloadKey((k) => k + 1)}
       />
     );
-  } else if (!selectedVendor) {
-    content = <p>No vendors available.</p>;
   } else {
     content = (
       <>
         <section>
           <h2 className="section-title">Choose a vendor</h2>
+
           <div className="vendor-grid">
             {vendors.map((vendor) => (
               <VendorCard
@@ -157,17 +169,22 @@ function App() {
           </div>
         </section>
 
-        <section>
-          <h2 className="section-title">Menu: {selectedVendor.name}</h2>
-          <MenuList
-            items={selectedVendor.menu}
-            onAdd={handleAdd}
-            favourites={favourites}
-            onToggleFavourite={handleToggleFavourite}
-            showFavouritesOnly={showFavouritesOnly}
-            onShowFavouritesOnlyChange={setShowFavouritesOnly}
-          />
-        </section>
+        {selectedVendor && (
+          <section>
+            <h2 className="section-title">Menu: {selectedVendor.name}</h2>
+
+            <MenuList
+              items={selectedVendor.menu}
+              onAdd={handleAdd}
+              favourites={favourites}
+              onToggleFavourite={handleToggleFavourite}
+              showFavouritesOnly={showFavouritesOnly}
+              onShowFavouritesOnlyChange={setShowFavouritesOnly}
+            />
+          </section>
+        )}
+
+        {vendors.length === 0 && <p className="muted">No vendors available.</p>}
       </>
     );
   }
@@ -179,7 +196,9 @@ function App() {
         onShowMenu={() => setView("menu")}
         onShowCart={() => setView("cart")}
       />
+
       <main className="container">{content}</main>
+
       <Footer />
     </>
   );

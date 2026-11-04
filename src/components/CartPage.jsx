@@ -1,5 +1,6 @@
 import CartItem from "./CartItem.jsx";
 import CheckoutForm from "./CheckoutForm.jsx";
+import "../index.css";
 
 function CartPage({ cart, onChangeQty, onRemove, onPlaceOrder }) {
   if (cart.length === 0) {

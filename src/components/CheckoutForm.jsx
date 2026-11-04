@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../index.css";
 
 const MAHALLAHS = [
   "Ali",
@@ -11,6 +12,7 @@ const MAHALLAHS = [
   "Zubair",
 ];
 
+// Validate form values
 function validate(values) {
   const errors = {};
 
@@ -42,6 +44,7 @@ function CheckoutForm({ onPlaceOrder }) {
 
   const [errors, setErrors] = useState({});
 
+  // Handle input changes
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -51,6 +54,7 @@ function CheckoutForm({ onPlaceOrder }) {
     }));
   }
 
+  // Handle form submission
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -83,6 +87,7 @@ function CheckoutForm({ onPlaceOrder }) {
         onChange={handleChange}
       >
         <option value="">Select…</option>
+
         {MAHALLAHS.map((m) => (
           <option key={m} value={m}>
             {m}

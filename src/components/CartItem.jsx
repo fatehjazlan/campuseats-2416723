@@ -1,3 +1,4 @@
+import "../index.css";
 function CartItem({ line, onChangeQty, onRemove }) {
   const { item, qty } = line;
 

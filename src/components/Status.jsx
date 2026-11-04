@@ -1,4 +1,4 @@
-// Small components for the loading and error states of fetched data.
+import "../index.css";
 export function Loading() {
   return (
     <p className="muted" role="status">
@@ -6,6 +6,7 @@ export function Loading() {
     </p>
   );
 }
+
 export function ErrorMessage({ message, onRetry }) {
   return (
     <div className="card error" role="alert">

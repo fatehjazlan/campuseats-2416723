@@ -1,3 +1,4 @@
+import "../index.css";
 function VendorCard({ vendor, isSelected, onSelect }) {
   return (
     <button
