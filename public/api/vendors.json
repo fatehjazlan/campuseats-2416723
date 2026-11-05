@@ -136,82 +136,85 @@
   },
   {
     "id": "2418793-Faizul-Cafe",
-    "name": "Faizul Cafe",
+    "name": "ZUL.CO Signature",
     "location": "Mahallah Siddiq, Block A",
     "openHours": "8:00 am - 11:00 pm",
     "isOpen": true,
     "menu": [
       {
-        "id": "2418793-d1",
-        "name": "Teh Hijau",
+        "id": "2418793-m1",
+        "name": "Nasi Dagang",
+        "image": "/images/nasidagang.jpeg",
+        "price": 6.0,
+        "category": "Meals",
+        "popular": true,
+        "description": "Rice served with rich fish curry.",
+        "available": true
+      },
+      {
+        "id": "2418793-m2",
+        "name": "Nasi Kerabu",
+        "price": 6.0,
+        "category": "Meals",
+        "popular": true,
+        "description": "Blue rice served with herbs and sides.",
+        "available": false
+      },
+      {
+        "id": "2418793-m3",
+        "name": "Nasi Goreng Chicken Chop",
+        "price": 10.5,
+        "category": "Meals",
+        "popular": true,
+        "description": "Fried rice with crispy chicken chop.",
+        "available": true
+      },
+      {
+        "id": "2418793-s1",
+        "name": "Dubai Chewy Cookies",
+        "image": "/images/dcc.jpeg",
+        "price": 7.0,
+        "category": "Snacks",
+        "popular": true,
+        "description": "Rich chocolate cookies, chewy centre.",
+        "available": true
+      },
+      {
+        "id": "2418793-s2",
+        "name": "Keropok Lekor",
         "price": 3.0,
+        "category": "Snacks",
+        "popular": true,
+        "description": "Traditional fried fish crackers. (2 pcs)",
+        "available": true
+      },
+      {
+        "id": "2418793-s3",
+        "name": "Vietnamese Spring Roll",
+        "price": 15.0,
+        "category": "Snacks",
+        "popular": true,
+        "description": "Spring rolls, fresh vegetables. (3 pcs)",
+        "available": false
+      },
+      {
+        "id": "2418793-d1",
+        "name": "Matcha Strawberry",
+        "image": "/images/matchastrawberry.jpeg",
+        "price": 7.0,
         "category": "Drinks",
-        "description": "Green tea with a hint of sweetness",
-        "available": true,
-        "popular": true
+        "popular": true,
+        "description": "Matcha blended with sweet strawberry.",
+        "available": false
       },
       {
         "id": "2418793-d2",
-        "name": "Teh Bunga",
-        "price": 2.5,
-        "category": "Drinks",
-        "description": "Floral tea with a sweet taste",
-        "available": true,
-        "popular": true
-      },
-      {
-        "id": "2418793-d3",
-        "name": "Teh Tarik",
-        "price": 2.5,
-        "category": "Drinks",
-        "description": "Classic Malaysian pulled milk tea",
-        "available": true,
-        "popular": true
-      },
-      {
-        "id": "2418793-d4",
-        "name": "Teh O Ais",
-        "price": 1.8,
-        "category": "Drinks",
-        "description": "Ice tea with a sweet taste",
-        "available": true,
-        "popular": true
-      },
-      {
-        "id": "2418793-d5",
-        "name": "Matcha Strawberry",
-        "price": 7.0,
-        "category": "Drinks",
-        "description": "Matcha and strawberry blended together",
-        "available": true,
-        "popular": true
-      },
-      {
-        "id": "2418793-d6",
-        "name": "Keladi Latte",
-        "price": 6.5,
-        "category": "Drinks",
-        "description": "A creamy latte with taro flavor",
-        "available": true,
-        "popular": true
-      },
-      {
-        "id": "2418793-d7",
         "name": "Spanish Latte",
         "price": 7.0,
         "category": "Drinks",
-        "description": "A rich and creamy latte with Spanish influences",
-        "available": true,
-        "popular": true
-      },
-      {
-        "id": "2418793-d8",
-        "name": "Americano",
-        "price": 5.0,
-        "category": "Drinks",
-        "description": "A strong coffee drink with a smooth taste",
-        "available": true,
-        "popular": true
+        "popular": true,
+        "description": "Rich espresso with creamy milk.",
+        "available": true
       }
     ]
   }

@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 function NotFoundPage() {
   return (
     <section>
@@ -5,6 +7,10 @@ function NotFoundPage() {
       <p className="muted">
         Sorry, the page you are looking for does not exist.
       </p>
+
+      <Link to="/" className="link">
+        Back to Home
+      </Link>
     </section>
   );
 }

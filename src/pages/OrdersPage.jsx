@@ -10,7 +10,7 @@ function OrdersPage() {
       {orders.length === 0 ? (
         <p className="muted">No orders yet.</p>
       ) : (
-        orders.map((order, index) => (
+        [...orders].reverse().map((order, index) => (
           <div className="card" key={index}>
             <h3>Order #{index + 1}</h3>
 

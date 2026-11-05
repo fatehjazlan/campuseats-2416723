@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import { CartProvider } from "./context/CartProvider.jsx";
-import Layout from "./Layout.jsx";
+import Layout from "./components/Layout.jsx";
 
 import HomePage from "./pages/HomePage.jsx";
 import VendorPage from "./pages/VendorPage.jsx";
