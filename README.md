@@ -10,3 +10,5 @@ MUHAMMAD DINIE HUMAIDIE
 
 The vendors listed above were adapted from my classmates' projects.
 Credit is given to their original owners.
+
+Firebase project ID: campuseats-2416723
