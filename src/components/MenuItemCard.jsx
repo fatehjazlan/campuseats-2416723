@@ -1,6 +1,10 @@
+import { Link } from "react-router";
+import { useAuth } from "../hooks/useAuth.js";
 import "../index.css";
 
 function MenuItemCard({ item, onAdd, isFavourite, onToggleFavourite }) {
+  const { user } = useAuth();
+
   return (
     <article className="card menu-card">
       <div className="thumb" aria-hidden="true">
@@ -12,13 +16,19 @@ function MenuItemCard({ item, onAdd, isFavourite, onToggleFavourite }) {
       <p className="muted">{item.description}</p>
       <p className="price">RM {item.price.toFixed(2)}</p>
 
-      <button
-        type="button"
-        className="btn"
-        onClick={() => onToggleFavourite(item.id)}
-      >
-        {isFavourite ? "♥ Favourite" : "♡ Add to Favourite"}
-      </button>
+      {user ? (
+        <button
+          type="button"
+          className="btn"
+          onClick={() => onToggleFavourite(item.id)}
+        >
+          {isFavourite ? "♥ Favourite" : "♡ Add to Favourite"}
+        </button>
+      ) : (
+        <p className="muted">
+          <Link to="/login">Log in to save favourites</Link>
+        </p>
+      )}
 
       <button
         type="button"

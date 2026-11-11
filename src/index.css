@@ -247,3 +247,14 @@ body {
 .link {
   color: var(--green);
 }
+.user-name {
+  color: white;
+}
+
+.nav button.link {
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}

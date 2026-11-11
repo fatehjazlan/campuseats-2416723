@@ -1,12 +1,16 @@
 import { useMemo } from "react";
 import { CartContext } from "./cart-context.js";
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
+import { useAuth } from "../hooks/useAuth.js";
 
 export function CartProvider({ children }) {
+  const { user } = useAuth();
+
   const [cart, setCart] = useLocalStorage("campuseats-cart", []);
   const [orders, setOrders] = useLocalStorage("campuseats-orders", []);
+
   const [favourites, setFavourites] = useLocalStorage(
-    "campuseats-favourites",
+    user ? "ce-favs-" + user.uid : "ce-favs-guest",
     [],
   );
 
@@ -50,6 +54,8 @@ export function CartProvider({ children }) {
   }
 
   function toggleFavourite(itemId) {
+    if (!user) return;
+
     setFavourites((prev) =>
       prev.includes(itemId)
         ? prev.filter((id) => id !== itemId)
@@ -67,10 +73,10 @@ export function CartProvider({ children }) {
       changeQty,
       removeFromCart,
       placeOrder,
-      favourites,
+      favourites: user ? favourites : [],
       toggleFavourite,
     }),
-    [cart, orders, count, total, favourites],
+    [cart, orders, count, total, favourites, user],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

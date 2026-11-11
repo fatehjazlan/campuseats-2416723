@@ -1,10 +1,12 @@
 import { useState } from "react";
 import MenuItemCard from "./MenuItemCard.jsx";
 import { useCart } from "../hooks/useCart.js";
+import { useAuth } from "../hooks/useAuth.js";
 import "../index.css";
 
 function MenuList({ items }) {
   const { addToCart, favourites, toggleFavourite } = useCart();
+  const { user } = useAuth();
 
   const [showFavouritesOnly, setShowFavouritesOnly] = useState(false);
 
@@ -14,16 +16,18 @@ function MenuList({ items }) {
 
   return (
     <>
-      <div className="favourite-filter">
-        <label>
-          <input
-            type="checkbox"
-            checked={showFavouritesOnly}
-            onChange={(e) => setShowFavouritesOnly(e.target.checked)}
-          />
-          Favourites Only ❤️
-        </label>
-      </div>
+      {user && (
+        <div className="favourite-filter">
+          <label>
+            <input
+              type="checkbox"
+              checked={showFavouritesOnly}
+              onChange={(e) => setShowFavouritesOnly(e.target.checked)}
+            />
+            Favourites Only ❤️
+          </label>
+        </div>
+      )}
 
       {visibleItems.length === 0 ? (
         <p className="muted">
