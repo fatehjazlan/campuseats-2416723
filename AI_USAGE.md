@@ -83,3 +83,23 @@
 4. One thing the AI got wrong and how I fixed it:
 
 - The code suggested by AI did not fully match my existing file structure and component implementation.I provided my actual code and asked AI to correct the functions,props and imports to ensure everything worked properly.
+
+## Week 5
+
+1. Tool(s):
+
+- ChatGPT and Visual Studio Code.
+
+2. What I asked for:
+
+- Help me implement Firebase Authentication,including user registration,login,Google login and logout.
+- I also asked for help to reimplementing user-specific Favourite Items so that each user can save and manage their own favourite items.
+
+3. What I kept, changed or rejected, and why:
+
+- I kept the Firebase Authentication structure and the user-specific local storage approach.
+- I kept the existing cart and order functionality unchanged.
+
+4. One thing the AI got wrong and how I fixed it:
+
+- I updated the useLocalStorage hook to handle key changes so that each user could access their own saved favourites after logging in or refreshing the page.
