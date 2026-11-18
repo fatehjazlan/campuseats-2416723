@@ -1,18 +1,31 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CartContext } from "./cart-context.js";
 import { useLocalStorage } from "../hooks/useLocalStorage.js";
 import { useAuth } from "../hooks/useAuth.js";
+import {
+  subscribeToFavourites,
+  addFavourite,
+  removeFavourite,
+} from "../services/favourites.js";
 
 export function CartProvider({ children }) {
   const { user } = useAuth();
 
   const [cart, setCart] = useLocalStorage("campuseats-cart", []);
-  const [orders, setOrders] = useLocalStorage("campuseats-orders", []);
 
-  const [favourites, setFavourites] = useLocalStorage(
-    user ? "ce-favs-" + user.uid : "ce-favs-guest",
-    [],
-  );
+  const [favourites, setFavourites] = useState([]);
+
+  useEffect(() => {
+    setFavourites([]);
+
+    if (!user) return;
+
+    const unsubscribe = subscribeToFavourites(user.uid, setFavourites, (err) =>
+      console.error("Favourites error:", err),
+    );
+
+    return unsubscribe;
+  }, [user?.uid]);
 
   const count = cart.reduce((sum, line) => sum + line.qty, 0);
 
@@ -46,37 +59,38 @@ export function CartProvider({ children }) {
     setCart((prev) => prev.filter((line) => line.item.id !== itemId));
   }
 
-  function placeOrder(details) {
-    const order = { ...details, total, items: cart };
-
-    setOrders((prev) => [...prev, order]);
+  // Clear cart after placing an order
+  function clearCart() {
     setCart([]);
   }
 
-  function toggleFavourite(itemId) {
+  async function toggleFavourite(itemId) {
     if (!user) return;
 
-    setFavourites((prev) =>
-      prev.includes(itemId)
-        ? prev.filter((id) => id !== itemId)
-        : [...prev, itemId],
-    );
+    try {
+      if (favourites.includes(itemId)) {
+        await removeFavourite(user.uid, itemId);
+      } else {
+        await addFavourite(user.uid, itemId);
+      }
+    } catch (error) {
+      console.error("Could not update favourite:", error);
+    }
   }
 
   const value = useMemo(
     () => ({
       cart,
-      orders,
       count,
       total,
       addToCart,
       changeQty,
       removeFromCart,
-      placeOrder,
+      clearCart,
       favourites: user ? favourites : [],
       toggleFavourite,
     }),
-    [cart, orders, count, total, favourites, user],
+    [cart, count, total, favourites, user],
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

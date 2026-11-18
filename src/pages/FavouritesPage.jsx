@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useCart } from "../hooks/useCart.js";
 import { useAuth } from "../hooks/useAuth.js";
 import { useVendors } from "../hooks/useVendors.js";
+import { subscribeToMenu } from "../services/vendors.js";
 import MenuItemCard from "../components/MenuItemCard.jsx";
 import { Loading, ErrorMessage } from "../components/Status.jsx";
 
@@ -9,6 +11,31 @@ function FavouritesPage() {
   const { user } = useAuth();
   const { favourites, toggleFavourite, addToCart } = useCart();
   const { vendors, loading, error, reload } = useVendors();
+
+  const [allItems, setAllItems] = useState([]);
+
+  useEffect(() => {
+    if (loading || error) return;
+
+    setAllItems([]);
+
+    const unsubscribers = vendors.map((vendor) =>
+      subscribeToMenu(
+        vendor.id,
+        (menu) => {
+          setAllItems((prev) => [
+            ...prev.filter((item) => item.vendorId !== vendor.id),
+            ...menu,
+          ]);
+        },
+        (err) => console.error("Menu error:", err),
+      ),
+    );
+
+    return () => {
+      unsubscribers.forEach((unsubscribe) => unsubscribe());
+    };
+  }, [vendors, loading, error]);
 
   if (!user) {
     return (
@@ -22,8 +49,6 @@ function FavouritesPage() {
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error} onRetry={reload} />;
-
-  const allItems = vendors.flatMap((vendor) => vendor.menu || []);
 
   const favouriteItems = allItems.filter((item) =>
     favourites.includes(item.id),

@@ -36,7 +36,7 @@
 
 - Some component props did not match my existing code.I corrected the prop names and checked that the menu items displayed correctly.
 
-## Week 3 – AI Usage
+## Week 3
 
 1. Tool(s):
 
@@ -58,7 +58,7 @@
 
 - The AI initially suggested CSS and component code without checking all my existing styles and props.I had to adjust the code to match my existing project so that the menu cards displayed correctly.
 
-## Week 4 – AI Usage
+## Week 4
 
 1. Tool(s):
 
@@ -103,3 +103,23 @@
 4. One thing the AI got wrong and how I fixed it:
 
 - I updated the useLocalStorage hook to handle key changes so that each user could access their own saved favourites after logging in or refreshing the page.
+
+## Week 6
+
+1. Tool(s):
+
+- ChatGPT and Visual Studio Code.
+
+2. What I asked for:
+
+- How to use onSnapshot() to display real-time updates.
+- How to implement order creation,pickup time updates,order cancellation and favourite items.
+
+3. What I kept, changed or rejected, and why:
+
+- I kept my existing cart functionality and changed the favourite storage from localStorage to Firestore.
+- I used onSnapshot() to listen for real-time changes to vendors, menu items, orders, and favourite items.
+
+4. One thing the AI got wrong and how I fixed it:
+
+- Initially, the AI assumed that menu items were stored inside the vendor documents. However, my project stores menu items in separate Firestore subcollections. I corrected the code to subscribe to each vendor's menu subcollection so that favourite items could be displayed correctly.

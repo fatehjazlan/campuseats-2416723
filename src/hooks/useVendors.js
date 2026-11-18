@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { subscribeToVendors } from "../services/vendors.js";
 
 export function useVendors() {
   const [vendors, setVendors] = useState([]);
@@ -7,37 +8,21 @@ export function useVendors() {
   const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
-    const controller = new AbortController();
+    setLoading(true);
+    setError(null);
 
-    async function loadVendors() {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const response = await fetch("/api/vendors.json", {
-          signal: controller.signal,
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-
-        const data = await response.json();
+    const unsubscribe = subscribeToVendors(
+      (data) => {
         setVendors(data);
-      } catch (err) {
-        if (err.name !== "AbortError") {
-          setError(err.message);
-        }
-      } finally {
-        if (!controller.signal.aborted) {
-          setLoading(false);
-        }
-      }
-    }
+        setLoading(false);
+      },
+      (err) => {
+        setError(err.message);
+        setLoading(false);
+      },
+    );
 
-    loadVendors();
-
-    return () => controller.abort();
+    return unsubscribe;
   }, [reloadKey]);
 
   function reload() {
